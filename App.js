@@ -1,9 +1,9 @@
-import Login from "./src/screens/Login";
+import SimpleWorkoutList from "./src/screens/2-simpleworkoutlist/SimpleWorkoutList";
 
 export default function App() {
-  return (
-    <>
-      <Login/>
-    </>
-  );
+    return (
+        <>
+            <SimpleWorkoutList/>
+        </>
+    );
 }
