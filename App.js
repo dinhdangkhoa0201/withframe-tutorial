@@ -1,9 +1,9 @@
-import ProfileCard2 from "./src/screens/3-profilecard/ProfileCard2";
+import Dashboard from "./src/screens/0-dashboard/Dashboard";
 
 export default function App() {
     return (
         <>
-            <ProfileCard2/>
+            <Dashboard/>
         </>
     );
 }
