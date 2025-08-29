@@ -1,9 +1,9 @@
-import SimpleWorkoutList from "./src/screens/2-simpleworkoutlist/SimpleWorkoutList";
+import ProfileCard2 from "./src/screens/3-profilecard/ProfileCard2";
 
 export default function App() {
     return (
         <>
-            <SimpleWorkoutList/>
+            <ProfileCard2/>
         </>
     );
 }
