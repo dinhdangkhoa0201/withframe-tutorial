@@ -43,5 +43,11 @@ export const stackNavigatorConfig = [
             title: "Crypto Exchange",
             headerShown: false
         }
+    }, {
+        name: "CreditCardPicker",
+        component: require("./src/screens/6-creditcardpicker/CreditCardPicker").default,
+        options: {
+            title: "Credit Card Picker"
+        }
     }
 ]

@@ -55,5 +55,15 @@ export const DASHBOARD_DATA = [
                 navigateTo: "CryptoExchange"
             }
         ]
+    }, {
+        name: "6 - Credit Card Picker",
+        items: [
+            {
+                id: "creditcard",
+                label: "Credit Card Picker",
+                icon: "credit-card",
+                navigateTo: "CreditCardPicker"
+            }
+        ]
     }
 ]
