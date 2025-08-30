@@ -1,78 +1,107 @@
 import React from "react";
-import {SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import Feather from "react-native-vector-icons/Feather";
+import {DASHBOARD_DATA} from "../../../dashboard";
 
-const items = [
-    {
-        name: "1 - Login"
-    }, {
-        name: "2 - Simple Work Out List"
-    }, {
-        name: "3 - Profile Card",
-        children: [
-            {name: "Profile Card 1"},
-            {name: "Profile Card 2"}
-        ]
-    }
-]
+export default function Dashboard({navigation}) {
 
-export default function Dashboard() {
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: "#ebecf4"}}>
-            <View style={styles.container}>
-                <Text style={styles.title}>Dashboard 🍌</Text>
-                {
-                    items.map((item, index) => (
-                        <TouchableOpacity
-                            key={index}
-                            onPress={() => {
-                                // Handle navigation to respective screen
-                            }}>
-                            <View style={styles.card}>
-                                <Text style={styles.cardTitle}>{item.name}</Text>
+            <ScrollView contentContainerStyle={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.title}>Dashboard 👽</Text>
+                </View>
 
-                                <View style={styles.cardAction}>
-                                    <Feather name={"chevron-right"} size={16} color={"#9ca3af"}/>
-                                </View>
+                {
+                    DASHBOARD_DATA.map(({name, items}, index) => (
+                        <View key={name} style={styles.section}>
+                            <View style={styles.sectionHeader}>
+                                <Text style={styles.sectionHeaderText}>{name}</Text>
                             </View>
-                        </TouchableOpacity>
+
+                            <View style={styles.sectionBody}>
+                                {
+                                    items.map(({id, label, icon, navigateTo}) => (
+                                        <View key={id}
+                                              style={[
+                                                  styles.rowWrapper,
+                                                  index === 0 && ({borderTopWidth: 0})
+                                              ]}>
+                                            <TouchableOpacity onPress={() => {
+                                                // handle onPress
+                                                navigation.navigate(navigateTo);
+                                            }}>
+                                                <View style={styles.row}>
+                                                    <Feather name={icon} color={"#616161"} size={22}
+                                                             style={{marginRight: 12}}/>
+
+                                                    <Text style={styles.rowLabel}>{label}</Text>
+
+                                                    <View style={styles.rowSpace}></View>
+
+                                                    <Feather name={"chevron-right"} color={"#ababab"} size={22}/>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    ))
+                                }
+                            </View>
+                        </View>
                     ))
                 }
-            </View>
+            </ScrollView>
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         padding: 24
     },
-    title: {
-        fontSize: 24,
-        fontWeight: "700",
-        marginTop: 12,
+    header: {
+        paddingHorizontal: 24,
         marginBottom: 12
     },
-    card: {
-        paddingVertical: 14,
-        paddingHorizontal: 16,
+    title: {
+        fontSize: 32,
+        fontWeight: "700",
+        color: "#1d1d1d",
+    },
+    section: {
+        paddingTop: 12,
+    },
+    sectionHeader: {
+        paddingHorizontal: 24,
+        paddingVertical: 8,
+    },
+    sectionHeaderText: {
+        fontSize: 14,
+        fontWeight: "600",
+        color: "#a7a7a7",
+        textTransform: "uppercase",
+        letterSpacing: 1.2
+    },
+    rowWrapper: {
+        paddingLeft: 24,
+        borderTopWidth: 1,
+        borderColor: "#e3e3e3",
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        marginBottom: 2
+    },
+    row: {
+        height: 50,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "flex-start",
-        borderTopWidth: 1,
-        borderBottomWidth: 1,
-        borderColor: "#e3e3e3",
-        marginBottom: 8,
-        backgroundColor: "#fff",
-        borderRadius: 8
+        paddingRight: 24
     },
-    cardTitle: {
-        fontSize: 16,
-        fontWeight: "600",
+    rowLabel: {
+        fontSize: 17,
+        fontWeight: "500",
         color: "#000"
     },
-    cardAction: {
-        marginLeft: "auto"
+    rowSpace: {
+        flex: 1
     }
 })

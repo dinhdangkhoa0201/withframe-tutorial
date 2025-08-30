@@ -1,10 +1,24 @@
-import Dashboard from "./src/screens/0-dashboard/Dashboard";
-import SimpleSetting from "./src/screens/4-simplesetting/SimpleSetting";
+import React from "react";
+import {stackNavigatorConfig} from "./navigationConfig";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import {NavigationContainer} from "@react-navigation/native";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
-        <>
-            <SimpleSetting/>
-        </>
-    );
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName={"Dashboard"} id={"MainStack"}>
+                {
+                    stackNavigatorConfig.map((screen) => (
+                        <Stack.Screen key={screen.name}
+                                      name={screen.name}
+                                      component={screen.component}
+                                      options={screen.options}/>
+                    ))
+
+                }
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
 }
