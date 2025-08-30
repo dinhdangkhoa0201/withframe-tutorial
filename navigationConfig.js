@@ -36,5 +36,12 @@ export const stackNavigatorConfig = [
         options: {
             title: "Simple Setting"
         }
+    }, {
+        name: "CryptoExchange",
+        component: require("./src/screens/5-cryptoexchange/CryptoExchange").default,
+        options: {
+            title: "Crypto Exchange",
+            headerShown: false
+        }
     }
 ]

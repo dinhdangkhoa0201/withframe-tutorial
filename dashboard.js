@@ -45,5 +45,15 @@ export const DASHBOARD_DATA = [
                 navigateTo: "Setting"
             }
         ]
+    }, {
+        name: "5 - Crypto Exchange",
+        items: [
+            {
+                id: "crypto",
+                label: "Crypto Exchange",
+                icon: "dollar-sign",
+                navigateTo: "CryptoExchange"
+            }
+        ]
     }
 ]
